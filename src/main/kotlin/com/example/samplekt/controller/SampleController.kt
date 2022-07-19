@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 class SampleController(val sampleService: SampleService) {
     @GetMapping("/samples")
     fun getSamples(): List<SampleResponse> {
-        return sampleService.getSamples()
+        return sampleService.getSamples().ifEmpty { listOf(SampleResponse("sample")) }
     }
 
     @PostMapping("/samples")
