@@ -7,13 +7,19 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class SampleController(val sampleService: SampleService){
+class SampleController(val sampleService: SampleService) {
     @GetMapping("/samples")
-    fun getSamples() : List<SampleResponse> {
+    fun getSamples(): List<SampleResponse> {
         return sampleService.getSamples()
     }
+
     @PostMapping("/samples")
     fun addSample(value: String) {
         sampleService.addSample(value)
+    }
+
+    @GetMapping("/health")
+    fun healthCheck(): String {
+        return "healthy"
     }
 }
